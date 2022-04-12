@@ -1,1 +1,10 @@
-<p>film works!</p>
+<app-navbar></app-navbar>
+<div class="container mt-5">
+  <div class="row">
+    <div class="card" style="width: 18rem;" *ngFor="let f of film; let i = index">
+        <div >
+          <img src="https://image.tmdb.org/t/p/w500{{f.poster_path}}" >
+          </div>
+        </div>
+    </div>
+  </div>

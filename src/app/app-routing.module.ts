@@ -3,15 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
 import { NavbarComponent } from './components/navbar/navbar.component';
 
-const routes: Routes = [{
-
-  path: '',
-  canActivate: [AuthGuard],
-  loadChildren: ()=>
-  import('./components/film-page/film-page.module').then((x)=>x.FilmPageModule)
-}
-
-];
+const routes: Routes = [];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

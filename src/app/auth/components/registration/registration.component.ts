@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../auth.service';
+import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-registration',
@@ -7,12 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authSrv: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
-accedi(){
+signUp(form:NgForm){
+
+    this.authSrv.registration(form.value)
+    alert('Utente Registrato!');
+    this.router.navigate(['/login'])
+
 
 }
 

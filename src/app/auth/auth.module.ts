@@ -4,8 +4,7 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { FormsModule } from '@angular/forms';
 import { TokenInterceptor } from './token.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatButtonModule} from '@angular/material/button';
+
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 
@@ -19,8 +18,6 @@ import { RegistrationComponent } from './components/registration/registration.co
     CommonModule,
     AuthRoutingModule,
     FormsModule,
-  MatFormFieldModule,
-  MatButtonModule
 
   ],
 

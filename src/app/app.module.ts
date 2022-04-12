@@ -3,23 +3,45 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './auth/components/login/login.component';
-import { RegistrationComponent } from './auth/components/registration/registration.component';
+
 import { AuthModule } from './auth/auth.module';
 import { FilmComponent } from './components/film/film.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FilmPageComponent } from './components/film-page/film-page.component';
-import { FilmPageModule } from './components/film-page/film-page.module';
+
+import { HttpClientModule } from '@angular/common/http';
+import { Route, RouterModule } from '@angular/router';
+import { AuthGuard } from './auth/auth.guard';
+import { ProfileComponent } from './components/profile/profile.component';
+
+
+const routes: Route[] = [
+  {
+    path: '',
+    component: FilmComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: '**',
+    redirectTo: ''
+  }
+]
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-
+    NavbarComponent,
     FilmComponent,
     NavbarComponent,
-    FilmPageComponent,
+
+    ProfileComponent,
 
 
   ],
@@ -28,7 +50,10 @@ import { FilmPageModule } from './components/film-page/film-page.module';
     AppRoutingModule,
     AuthModule,
     BrowserAnimationsModule,
-    FilmPageModule
+    HttpClientModule,
+    RouterModule.forRoot(routes)
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]
